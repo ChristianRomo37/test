@@ -32,10 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject loseMenu;
     public GameObject winMenu;
     public GameObject playerDamageFlash;
-    public TextMeshProUGUI carPartsRemainingLabel;
-    public TextMeshProUGUI carPartsRemainingText;
-    public TextMeshProUGUI helicopterPartsRemainingLabel;
-    public TextMeshProUGUI helicopterPartsRemainingText;
+ 
     public GameObject ret;
     public Button respawn;
 
@@ -48,10 +45,7 @@ public class GameManager : MonoBehaviour
     public Image HPBar;
     public TextMeshProUGUI reloadPrompt;
     public TextMeshProUGUI objectivePrompt;
-    public GameObject Grenade;
-    public TextMeshProUGUI grenadePrompt;
-
-
+  
 
     [Header("----- Main Menu -----")]
     public GameObject levelSelect;
