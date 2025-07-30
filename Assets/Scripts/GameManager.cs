@@ -1,0 +1,90 @@
+using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
+
+public class GameManager : MonoBehaviour
+{
+
+    public static GameManager instance;
+
+    [Header("----- Scene -----")]
+    public Scene context;
+
+
+    [Header("-----Player Stuff-----")]
+    public GameObject player;
+    //public playerControler playerScript;
+    public GameObject playerSpawnPos;
+
+
+    [Header("-----Enemy Stuff-----")]
+
+
+
+
+
+    [Header("-----UI Stuff-----")]
+    //public UIElements ui;
+    public GameObject activeMenu;
+    public GameObject pauseMenu;
+    public GameObject loseMenu;
+    public GameObject winMenu;
+    public GameObject playerDamageFlash;
+    public TextMeshProUGUI carPartsRemainingLabel;
+    public TextMeshProUGUI carPartsRemainingText;
+    public TextMeshProUGUI helicopterPartsRemainingLabel;
+    public TextMeshProUGUI helicopterPartsRemainingText;
+    public GameObject ret;
+    public Button respawn;
+
+
+    [Header("----- HUD Stuff-----")]
+    public TextMeshProUGUI ePrompt;
+    public TextMeshProUGUI aPrompt;
+    public TextMeshProUGUI totalMagSize;
+    public TextMeshProUGUI bulletsLeft;
+    public Image HPBar;
+    public TextMeshProUGUI reloadPrompt;
+    public TextMeshProUGUI objectivePrompt;
+    public GameObject Grenade;
+    public TextMeshProUGUI grenadePrompt;
+
+
+
+    [Header("----- Main Menu -----")]
+    public GameObject levelSelect;
+    public GameObject settings;
+    public GameObject confirmManager;
+
+
+    void Awake()
+    {
+        
+    }
+
+    void Update()
+    {
+        
+    }
+
+
+    public void pauseState()
+    {
+
+    }
+
+    public void unPauseState()
+    {
+        
+    }
+
+    public void youLose()
+    {
+        
+    }
+
+
+
+}

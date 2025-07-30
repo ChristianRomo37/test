@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5550700474415045897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920118091672394974}
+  - component: {fileID: -2873463321574320594}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920118091672394974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550700474415045897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.86807, y: 0, z: -4.1557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2873463321574320594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550700474415045897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425e032147f7af14cbaf6f453e6cd36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  context:
+    m_Handle: 0
+  player: {fileID: 0}
+  playerSpawnPos: {fileID: 0}
+  activeMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  loseMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  playerDamageFlash: {fileID: 0}
+  carPartsRemainingLabel: {fileID: 0}
+  carPartsRemainingText: {fileID: 0}
+  helicopterPartsRemainingLabel: {fileID: 0}
+  helicopterPartsRemainingText: {fileID: 0}
+  ret: {fileID: 0}
+  respawn: {fileID: 0}
+  ePrompt: {fileID: 0}
+  aPrompt: {fileID: 0}
+  totalMagSize: {fileID: 0}
+  bulletsLeft: {fileID: 0}
+  HPBar: {fileID: 0}
+  reloadPrompt: {fileID: 0}
+  objectivePrompt: {fileID: 0}
+  Grenade: {fileID: 0}
+  grenadePrompt: {fileID: 0}
+  levelSelect: {fileID: 0}
+  settings: {fileID: 0}
+  confirmManager: {fileID: 0}
