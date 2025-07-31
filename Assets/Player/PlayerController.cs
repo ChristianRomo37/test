@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 playerMouseInput;
     [SerializeField] private float sensitivity;
     [SerializeField] private Transform playerCamera;
+    [SerializeField ]private float jumpForce;
 
     private void Awake()
     {
@@ -22,16 +23,18 @@ public class PlayerController : MonoBehaviour
     {
         playerMouseInput = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());
 
-        MovePlayerCamera();
+        MovePlayer();
     }
 
-    private void MovePlayerCamera()
+    private void MovePlayer()
     {
-        xRot -= playerMouseInput.y * sensitivity;
-        //xRot = Mathf.Clamp(xRot, 90, 90);
+       Vector3 moveVector = transform.TransformDirection(playerMouseInput) * speed;
+        rb.linearVelocity = new Vector3(moveVector.x, rb.linearVelocity.y, moveVector.z);
 
-        transform.Rotate(0f, playerMouseInput.x * sensitivity, 0f);
-        playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
 
     }
 

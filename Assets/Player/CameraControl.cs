@@ -3,63 +3,33 @@ using UnityEngine.InputSystem;
 
 public class CameraControl : MonoBehaviour
 {
-    [SerializeField] int sensHor;
-    [SerializeField] int sensVert;
+    public float sensX;
+    public float sensY;
 
-    [SerializeField] int lockVermin;
-    [SerializeField] int lockVermax;
+    public Transform orientation;
 
-    [SerializeField] bool invertY;
+    float xRotation;
+    float yRotation;
 
-    
-    
-
-    float xrotation;
-
-    /*[Header("----- Shake -----")]
-    [SerializeField, Range(0.01f,1f)] float shakeX = 0.01f;
-    [SerializeField, Range(0.01f, 1f)] float shakeY = 0.01f;
-    [SerializeField, Range(0f, 3f)] float shakeSpeed;*/
-    Vector3 posOrig;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        posOrig = transform.position;
+        Cursor.visible = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
-        float mouseY = mouseDelta.y * Time.deltaTime * sensVert;
-        float mouseX = mouseDelta.x * Time.deltaTime * sensHor;
+        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
-        if (invertY)
-        {
-            xrotation += mouseY;
-        }
-        else
-        {
-            xrotation -= mouseY;
-        }
+        yRotation += mouseX;
+        xRotation -= mouseY;
 
-        xrotation = Mathf.Clamp(xrotation, lockVermin, lockVermax);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xrotation, 0, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
-        transform.parent.Rotate(Vector3.up * mouseX);
-
-        /*if (gameManager.instance.playerScript.isSprinting == true)
-        {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(Random.Range(-shakeX, shakeX), Random.Range(-shakeY, shakeY), transform.position.z), Time.deltaTime * shakeSpeed);
-        }
-        else
-            transform.position = posOrig;
-            //transform.position = Vector3.Lerp(transform.position, posOrig, Time.deltaTime * shakeSpeed);*/
     }
-
 
 }
