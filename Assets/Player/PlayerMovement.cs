@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;

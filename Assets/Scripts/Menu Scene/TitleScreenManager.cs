@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TitleScreenManager : MonoBehaviour
 {
-   
+    [SerializeField] GameObject player;
+
     public void StartNewGame()
     {
+        Instantiate(player);
         StartCoroutine(WorldSaveGameManager.instance.LoadWorldScene());
     }
 
