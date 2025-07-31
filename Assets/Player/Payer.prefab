@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4911697519297347511}
   - component: {fileID: 8403175019293338301}
   - component: {fileID: 8079369788772366007}
+  - component: {fileID: 5677153860908337973}
   m_Layer: 0
   m_Name: Payer
   m_TagString: Untagged
@@ -76,18 +77,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  sprintMod: 2
+  sprintSpeed: 0
+  isSprinting: 0
   groundDrag: 5
-  jumpForce: 12
+  jumpForce: 4
   jumpCoolDown: 0.5
+  jumpLimit: 1
   airMultiplier: 0.4
   readyToJump: 0
   jumpKey: 32
+  sprintKey: 304
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
   grounded: 0
+  maxSlopeAngle: 0
   orientation: {fileID: 1703289868040525341}
+--- !u!114 &5677153860908337973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704417595091244427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1bb3e7f49274b43a37e610d615cead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 10
+  currHp: 0
+  dead: 0
 --- !u!1 &4057713944957636451
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +204,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4057713944957636451}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 94d11ddf903611e499c14f6549c0f641, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
