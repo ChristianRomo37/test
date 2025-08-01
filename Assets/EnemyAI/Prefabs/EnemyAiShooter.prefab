@@ -1662,7 +1662,7 @@ GameObject:
   - component: {fileID: 7447493555925820426}
   - component: {fileID: 1390968809794597755}
   m_Layer: 0
-  m_Name: EnemyAi2
+  m_Name: EnemyAiShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1703,15 +1703,19 @@ MonoBehaviour:
   driftSpeed: 2
   patrolRange: 7
   patrolConeAngle: 30
-  viewRange: 5
-  shootRange: 5
-  shootCoolDown: 1
+  viewRange: 20
+  shootRange: 20
+  bulletForce: 10
   bulletPrefab: {fileID: 2479668419376947308, guid: 25192a43cff69e04794a688fa041113c, type: 3}
   gunBarrel: {fileID: 573813794260140578}
-  bulletForce: 5
+  shootCooldown: 0.2
+  rotationSpeed: 1080
   speedSmoothTime: 0.1
-  speedSmoothTimeUp: 0.1
-  speedSmoothTimeDown: 0.5
+  stopDistanceFromPlayer: 7
+  leadTimeMultiplier: 1.2
+  velocityMultiplier: 1
+  minPredictionDistance: 1.5
+  maxPredictionDistance: 20
 --- !u!195 &7447493555925820426
 NavMeshAgent:
   m_ObjectHideFlags: 0
