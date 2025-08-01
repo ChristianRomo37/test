@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -24,8 +25,11 @@ public class PlayerUIManager : MonoBehaviour
         playerMenuManager = GetComponentInChildren<PlayerMenuManager>();
     }
 
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
+
+
 }

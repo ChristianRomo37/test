@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "PoweUp Effect/Health Modifer")]
-
 public class HealthMod : PU_Modifer
 {
     public int HpValue;
@@ -9,12 +8,12 @@ public class HealthMod : PU_Modifer
     // + player currHp by HpValue
     public override void Activate(GameObject target)
     {
-        var playerhHealth = target.GetComponent<PlayerHealth>();
+        var playerHealth = target.GetComponent<PlayerHealth>();
 
-        Debug.Log(playerhHealth.currHp);
+        Debug.Log(playerHealth.currHp);
 
-        playerhHealth.currHp += HpValue;
+        playerHealth.currHp += HpValue;
 
-        Debug.Log(playerhHealth.currHp);
+        Debug.Log(playerHealth.currHp);
     }
 }
