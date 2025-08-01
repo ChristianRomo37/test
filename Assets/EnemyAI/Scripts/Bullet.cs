@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy")) 
         {
-            other.GetComponent<IDamage>().TakeDamage(damage);
+            other.GetComponentInParent<IDamage>().TakeDamage(damage);
         }
 
         CleanUp();

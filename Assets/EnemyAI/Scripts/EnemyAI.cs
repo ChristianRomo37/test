@@ -241,6 +241,7 @@ public class EnemyAI : MonoBehaviour
         {
             return hit.collider.CompareTag("Player");
         }
+        //make one for rigid body
         return false;
     }
     void FacePlayer()
