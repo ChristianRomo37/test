@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine;
 
 public class PlayerMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject activeMenu = null;
-    [SerializeField] GameObject previousActiveMenu = null;
-    [SerializeField] GameObject optionsMenu;
-    [SerializeField] GameObject returnToMainMenuConfirmation;
-    [SerializeField] GameObject pauseMenu;
+    
+
+    [SerializeField] public GameObject activeMenu = null;
+    [SerializeField] public GameObject previousActiveMenu = null;
+    [SerializeField] public GameObject optionsMenu;
+    [SerializeField] public GameObject returnToMainMenuConfirmation;
+    [SerializeField] public GameObject pauseMenu;
 
     public bool isPaused;
     float timeScaleOrig;
@@ -18,26 +22,38 @@ public class PlayerMenuManager : MonoBehaviour
     private void Awake()
     {
         timeScaleOrig = Time.timeScale;
+       
     }
 
+    private void Update()
+    {
+        InputSystem.Update();
+    }
     public void SetOptionsMenuActive()
     {
-        previousActiveMenu = activeMenu;
-        activeMenu = null;
+        SetPreviousMenu();
+        if (activeMenu != null)
+        {
+            activeMenu.SetActive(false);
+        }
         activeMenu = optionsMenu;
         activeMenu.SetActive(true);
     }
 
     public void SetPauseMenuActive()
     {
-        previousActiveMenu = activeMenu;
-        activeMenu = null;
-        activeMenu = pauseMenu;
-        activeMenu.SetActive(true);
-        PauseGame();
-        isPaused = !isPaused;
-        
-       
+        if(WorldSaveGameManager.instance.GetCurrentSceneIndex() != 0)
+        {
+           isPaused = !isPaused;
+           SetPreviousMenu();
+           if(activeMenu != null)
+           {
+              activeMenu.SetActive(false);
+           }
+           activeMenu = pauseMenu;
+           activeMenu.SetActive(true);
+           PauseGame();
+        }
     }
 
     public void PauseGame()
@@ -55,29 +71,43 @@ public class PlayerMenuManager : MonoBehaviour
         isPaused = !isPaused;
         activeMenu.SetActive(false);
         activeMenu = null;
+        previousActiveMenu = null;
     }
 
     public void ReturnToMainMenuPressed()
     {
-        previousActiveMenu = activeMenu;
-        activeMenu = null;
+        SetPreviousMenu();
+        activeMenu.SetActive(false);
         activeMenu = returnToMainMenuConfirmation;
         activeMenu.SetActive(true);
     }
 
     public void ReturnToMainMenu()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
         UnpauseGame();
         StartCoroutine(WorldSaveGameManager.instance.LoadMainMenu());
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     public void ReturnToPreviousMenu()
     {
         if(previousActiveMenu != null)
         {
-            activeMenu = null;
+            activeMenu.SetActive(false);
             activeMenu = previousActiveMenu;
             activeMenu.SetActive(true);
+            previousActiveMenu = null;
+        }
+    }
+
+    public void SetPreviousMenu()
+    {
+        if(activeMenu != null)
+        {
+            previousActiveMenu = activeMenu;
+            previousActiveMenu.SetActive(false);
         }
     }
 
