@@ -28,10 +28,26 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            
         }
 
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy")) 
+        {
+            other.GetComponent<IDamage>().TakeDamage(damage);
+        }
+
+        CleanUp();
+    }
+
+    private void CleanUp()
+    {
+        Destroy(gameObject);
+    }
+
 }
 
