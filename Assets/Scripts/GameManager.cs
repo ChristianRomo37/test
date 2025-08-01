@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         
     }
 
@@ -62,7 +64,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
 
     public void pauseState()
     {

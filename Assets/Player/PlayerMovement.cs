@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         origSpeed = moveSpeed;
         sprintSpeed = moveSpeed * sprintMod;
         playerHealth = GetComponent<PlayerHealth>();
+        spawnPlayer();
     }
 
     private void Update()
@@ -199,5 +200,10 @@ public class PlayerMovement : MonoBehaviour
     public void ApplyPowerUpMod(PU_Modifer modifer)
     {
         modifer.Activate(gameObject);
+    }
+
+    public void spawnPlayer()
+    {
+        transform.position = GameManager.instance.playerSpawnPos.transform.position;
     }
 }
