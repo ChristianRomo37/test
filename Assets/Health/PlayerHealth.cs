@@ -4,7 +4,7 @@ public class PlayerHealth : MonoBehaviour, IDamage
 {
     [Header("Stats")]
     [SerializeField] float MaxHp;
-    [SerializeField] float currHp;
+    [SerializeField] public float currHp;
     public bool dead;
 
     private void Start()

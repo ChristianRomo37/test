@@ -60,8 +60,8 @@ public class PlayerMovement : MonoBehaviour
         //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f, whatIsGround);
         if (!playerHealth.dead)
         {
-        MyInput();
-        SpeedControl();
+            MyInput();
+            SpeedControl();
         }
 
         if (IsGrounded())
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(jumpKey) && IsGrounded() && jumps<=jumpLimit)
+        if (Input.GetKey(jumpKey) && IsGrounded() && jumps <= jumpLimit)
         {
             //readyToJump = false;
 
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         else
-        { 
+        {
             Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.y);
 
             if (flatVel.magnitude > moveSpeed)
@@ -193,5 +193,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    // Activate Power Mod 
+    public void ApplyPowerUpMod(PU_Modifer modifer)
+    {
+        modifer.Activate(gameObject);
     }
 }
