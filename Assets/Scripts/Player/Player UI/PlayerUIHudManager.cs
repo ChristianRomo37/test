@@ -5,5 +5,15 @@ using UnityEngine;
 
 public class PlayerUIHudManager : MonoBehaviour
 {
-   
+    [SerializeField] UI_Stat_Bar healthBar;
+
+    public void SetNewHealthValue(float oldValue, float newValue)
+    {
+        healthBar.SetStat(Mathf.RoundToInt(newValue));
+    }
+
+    public void SetMaxHealthValue(int maxHealth)
+    {
+        healthBar.SetMaxStat(maxHealth);
+    }
 }

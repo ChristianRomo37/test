@@ -39,6 +39,12 @@ public class WorldSaveGameManager : MonoBehaviour
     {
         return worldSceneIndex;
     }
+
+    public int GetMainSceneIndex()
+    {
+        return mainMenuSceneIndex;
+    }
+
     public int GetCurrentSceneIndex()
     {
         return SceneManager.GetActiveScene().buildIndex;
