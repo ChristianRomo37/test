@@ -84,11 +84,11 @@ public class PlayerMenuManager : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
         UnpauseGame();
         StartCoroutine(WorldSaveGameManager.instance.LoadMainMenu());
-        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-
+        Cursor.visible = true;
     }
 
     public void ReturnToPreviousMenu()

@@ -30,16 +30,16 @@ public class PlayerInputController : MonoBehaviour
     private void OneSceneChange(Scene oldScene, Scene newScene)
     {
         //IF WE ARE LOADING INTO OUR WORLD SCENE, ENABLE OUR PLAYERS CONTROLS
-        if (newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
-        {
-            instance.enabled = true;
-        }
+        //if (newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
+        //{
+           // instance.enabled = true;
+        //}
         //OTHERWISE WE MUST BE AT THE MAIN MENU, DISABLE OUR PLAYERS CONTROLS
         //THIS IS SO OUR PLAYER CANT MOVE AROUND IF WE ENTER THINGS LIKE A CHARACTER CREATION MENU ECT
-        else
-        {
-            instance.enabled = false;
-        }
+        //else
+        //{
+            //instance.enabled = false;
+        //}
     }
 
     private void OnDestroy()
@@ -54,7 +54,7 @@ public class PlayerInputController : MonoBehaviour
 
         SceneManager.activeSceneChanged += OneSceneChange;
 
-        instance.enabled = false;
+        //instance.enabled = false;
     }
 
     private void OnEnable()

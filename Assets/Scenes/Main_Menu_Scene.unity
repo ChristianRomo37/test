@@ -252,17 +252,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32140932}
   m_CullTransparentMesh: 1
---- !u!114 &76808625 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2410170714510617541, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-  m_PrefabInstance: {fileID: 2738912937179476805}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e87d66cb8068e245966bf6b2a6071cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &96626795
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 536334930}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &477077401
@@ -1685,19 +1674,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1434538289}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 76808625}
-        m_TargetAssemblyTypeName: PlayerMenuManager, Assembly-CSharp
-        m_MethodName: SetOptionsMenuActive
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1434538289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,7 +1964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 050a98e97aec49e4c9b366f89a11407d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1704417595091244427, guid: f176b09f7cd9c7043b6f76260dac35e2, type: 3}
+  player: {fileID: 2926401431015078250, guid: 34604b7def79ef04daeaa6cdb725e426, type: 3}
+  optionsButton: {fileID: 1434538288}
 --- !u!1001 &2738912937179476805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2195,6 +2173,10 @@ PrefabInstance:
     - target: {fileID: 7928783832333079018, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_fontSizeBase
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966634989110303056, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8281036630111348482, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_Color.a
