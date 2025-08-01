@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 playerMouseInput;
     [SerializeField] private float sensitivity;
     [SerializeField] private Transform playerCamera;
-    [SerializeField ]private float jumpForce;
+    [SerializeField] private float jumpForce;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-       Vector3 moveVector = transform.TransformDirection(playerMouseInput) * speed;
+        Vector3 moveVector = transform.TransformDirection(playerMouseInput) * speed;
         rb.linearVelocity = new Vector3(moveVector.x, rb.linearVelocity.y, moveVector.z);
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -46,4 +46,5 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = velocity;
     }
+
 }
