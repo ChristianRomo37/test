@@ -9,6 +9,7 @@ public class WorldSaveGameManager : MonoBehaviour
 
     [Header("World Scene Index")]
     [SerializeField] int worldSceneIndex = 1;
+    [SerializeField] int mainMenuSceneIndex = 0;
 
     private void Awake()
     {
@@ -37,5 +38,12 @@ public class WorldSaveGameManager : MonoBehaviour
     public int GetWorldSceneIndex()
     {
         return worldSceneIndex;
+    }
+
+    public IEnumerator LoadMainMenu()
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(mainMenuSceneIndex);
+
+        yield return null;
     }
 }
