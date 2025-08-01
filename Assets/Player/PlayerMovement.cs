@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float sprintMod;
     public float sprintSpeed;
-    float origSpeed;
+    public float origSpeed;
     public bool isSprinting;
 
     public float groundDrag;
@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerHealth playerHealth;
 
+    //PU_Mod Script
+    PU_Modifer currentPUModifer;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -72,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             rb.linearDamping = 0;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ActivatePowerUp();
+        }
     }
 
     private void FixedUpdate()
@@ -195,9 +203,32 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
-    // Activate Power Mod 
+    // Apply Power Mod 
     public void ApplyPowerUpMod(PU_Modifer modifer)
     {
         modifer.Activate(gameObject);
+
+        var timePUMod = modifer as TimedPU_Modiifer;
+
+        if (timePUMod != null)
+        {
+            StartCoroutine(timePUMod.StartPowerUpCountdown(gameObject));
+        }
+    }
+
+    // Store PowerUp
+    public void StorePowerUp(PU_Modifer newPUMod)
+    {
+        currentPUModifer = newPUMod;
+    }
+
+    // Activate Stored PowerUp
+    void ActivatePowerUp()
+    {
+        if (currentPUModifer != null)
+        {
+            ApplyPowerUpMod(currentPUModifer);
+            currentPUModifer = null;
+        }
     }
 }
