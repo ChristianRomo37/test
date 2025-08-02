@@ -1974,10 +1974,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1117814624110366356, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 2738912937179476806}
     - target: {fileID: 1712234502998727251, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2070,33 +2066,9 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3945192940462135126, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4523657939174913701, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_Name
       value: Player UI Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8365823715962184184, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650748933142536470, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2106,26 +2078,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9198553284630186548, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
---- !u!114 &2738912937179476806 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2678584824487345667, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
-  m_PrefabInstance: {fileID: 2738912937179476805}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23af64143229b464aa666b0fa835bed5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5828306333729653348
 PrefabInstance:
   m_ObjectHideFlags: 0
