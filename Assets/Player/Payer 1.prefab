@@ -409,6 +409,7 @@ MonoBehaviour:
   moveSpeed: 7
   sprintMod: 2
   sprintSpeed: 0
+  origSpeed: 0
   isSprinting: 0
   groundDrag: 5
   jumpForce: 4
@@ -438,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 10
-  currHp: 0
+  currHp: 5
   dead: 0
 --- !u!1 &4223370920632215426
 GameObject:

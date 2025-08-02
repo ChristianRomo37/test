@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
     private void Start()
     {
         currHp = MaxHp;
+
+        PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(currHp, currHp / MaxHp);
     }
 
     public void TakeDamage(float damage)
@@ -20,5 +22,8 @@ public class PlayerHealth : MonoBehaviour, IDamage
         {
             dead = true;
         }
+
+        PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(currHp, currHp / MaxHp);
+
     }
 }

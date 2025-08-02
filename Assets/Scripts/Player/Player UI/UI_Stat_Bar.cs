@@ -18,7 +18,7 @@ public class UI_Stat_Bar : MonoBehaviour
     {
         if(slider.value != backgroundSlider.value)
         {
-            SliderLerp();
+           SliderLerp();
         }
         else
         {
@@ -26,13 +26,13 @@ public class UI_Stat_Bar : MonoBehaviour
         }
     }
 
-    public virtual void SetStat(int newValue)
+    public virtual void SetStat(float newValue)
     {
         backgroundSlider.value = newValue;
         SliderLerp();
     }
 
-    public virtual void SetMaxStat(int maxValue)
+    public virtual void SetMaxStat(float maxValue)
     {
         slider.maxValue = maxValue;
         backgroundSlider.maxValue = maxValue;
@@ -43,6 +43,7 @@ public class UI_Stat_Bar : MonoBehaviour
     public virtual void SliderLerp()
     {
         t += Time.deltaTime * 2f;
-        Mathf.Lerp(slider.value, backgroundSlider.value, t);
+        slider.value = Mathf.Lerp(slider.value, backgroundSlider.value, t);
+       
     }
 }
