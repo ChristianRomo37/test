@@ -9,6 +9,16 @@ public class PlayerUIHudManager : MonoBehaviour
 
     public void SetNewHealthValue(float oldValue, float newValue)
     {
+        if(oldValue < newValue)
+        {
+            healthBar.lerpFrontSlider = true;
+            healthBar.lerpBackSlider = false;
+        }
+        else if(oldValue > newValue)
+        {
+            healthBar.lerpBackSlider = true;
+            healthBar.lerpFrontSlider = false;
+        }
         healthBar.SetStat(newValue);
     }
 
