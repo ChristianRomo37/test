@@ -5,7 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float lifeTime = 3f;
-    int damage = 10;
+
+    [Header("Damage")]
+    public int damage = 1;
 
     [Header("Rotation")]
     public Vector3 spinSpeed = new Vector3(360f, 360f, 360f); // degrees per second
