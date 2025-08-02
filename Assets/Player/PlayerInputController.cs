@@ -9,6 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputController : MonoBehaviour
 {
+
+    public bool canInteract = false;
+    public bool isInteracting = false;
+    public bool Interact = false;
+
     public static PlayerInputController instance;
 
     PlayerControlls playerControlls;
@@ -64,6 +69,8 @@ public class PlayerInputController : MonoBehaviour
             playerControlls = new PlayerControlls();
 
             playerControlls.PlayerActions.Pause.performed += i => pauseInput = true;
+
+            playerControlls.PlayerActions.Interact.performed += i => isInteracting = true;
         }
 
         playerControlls.Enable();
@@ -92,8 +99,23 @@ public class PlayerInputController : MonoBehaviour
         
     }
 
+    private void HandleInteractionInput()
+    {
+        if(canInteract == true && isInteracting)
+        { 
+            Interact = true;
+        }
+        else
+        {
+            Interact = false;
+            isInteracting = false;
+        }
+    }
+
+
     private void HandleAllInputs()
     {
+        HandleInteractionInput();
         HandlePauseInput();
     }
 
