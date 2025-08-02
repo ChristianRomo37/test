@@ -7,7 +7,7 @@ public class PlayerUIManager : MonoBehaviour
 {
     public static PlayerUIManager instance;
 
-    [HideInInspector] public PlayerUIHudManager playerUIHudManager;
+    [SerializeField] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerMenuManager playerMenuManager;
 
     private void Awake()
@@ -21,14 +21,44 @@ public class PlayerUIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        playerUIHudManager = GetComponentInChildren<PlayerUIHudManager>();
         playerMenuManager = GetComponentInChildren<PlayerMenuManager>();
+        
+
+
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene oldScene, Scene newScene)
+    {
+        if (WorldSaveGameManager.instance.GetCurrentSceneIndex() == WorldSaveGameManager.instance.GetMainSceneIndex())
+        {
+            playerUIHudManager.gameObject.SetActive(false);
+        }
+        else
+        {
+            playerUIHudManager.gameObject.SetActive(true);
+        }
+    }
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.activeSceneChanged += OnSceneChanged;
+
+        if (WorldSaveGameManager.instance.GetCurrentSceneIndex() == WorldSaveGameManager.instance.GetMainSceneIndex())
+        {
+            playerUIHudManager.gameObject.SetActive(false);
+        }
+        else
+        {
+            playerUIHudManager.gameObject.SetActive(true);
+        }
+
     }
 
 

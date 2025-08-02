@@ -235,6 +235,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void spawnPlayer()
     {
-        transform.position = GameManager.instance.playerSpawnPos.transform.position;
+        if(GameManager.instance.playerSpawnPos != null)
+        {
+            transform.position = GameManager.instance.playerSpawnPos.transform.position;
+        }
+       
     }
 }

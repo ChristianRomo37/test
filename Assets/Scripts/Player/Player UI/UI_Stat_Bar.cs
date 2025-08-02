@@ -6,12 +6,11 @@ using UnityEngine.UI;
 
 public class UI_Stat_Bar : MonoBehaviour
 {
-    private Slider slider;
-    private Slider backgroundSlider;
+    [SerializeField] Slider slider;
+    [SerializeField] Slider backgroundSlider;
     private float t;
     protected virtual void Awake()
     {
-        slider = GetComponent<Slider>();
         t = 0;
     }
 

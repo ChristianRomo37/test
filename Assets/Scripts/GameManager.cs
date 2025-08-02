@@ -53,11 +53,24 @@ public class GameManager : MonoBehaviour
     public GameObject confirmManager;
 
 
-    void Awake()
+    private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
