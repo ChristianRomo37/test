@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 375493991426374821}
   m_Layer: 0
   m_Name: Staple
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152996dd8b9572546b638bc0597f70c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   spinSpeed: {x: 360, y: 360, z: 360}
 --- !u!1 &2900057810564194183
 GameObject:
