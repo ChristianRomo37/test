@@ -1578,7 +1578,7 @@ MonoBehaviour:
   - {fileID: 5453124811941703399, guid: 9ae5ad85be3574f4da4f57d6f2b5794f, type: 3}
   - {fileID: 5910197729787036592, guid: 6d4bd6f5ac8040f4989a10e148f937e5, type: 3}
   - {fileID: 6549051431164350113, guid: ef5ec51799bcaa0478a9b76fa288683a, type: 3}
-  dropChancePercentage: 25
+  dropChancePercentage: 33
 --- !u!195 &4388189154714350665
 NavMeshAgent:
   m_ObjectHideFlags: 0

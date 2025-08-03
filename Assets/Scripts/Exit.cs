@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.LightTransport;
+//using UnityEngine.LightTransport;
 
 public class Exit : MonoBehaviour
 { 
