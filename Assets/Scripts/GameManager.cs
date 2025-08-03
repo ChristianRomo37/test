@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     //public playerControler playerScript;
     public GameObject playerSpawnPos;
     public RewindManager rewindManager;
+    public AudioSource playerAudioSource;
 
 
     [Header("-----Enemy Stuff-----")]
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
         player.transform.position = playerSpawnPos.transform.position;
 
         rewindManager = player.GetComponentInChildren<RewindManager>();
+        
+        playerAudioSource = player.GetComponent<AudioSource>();
         
     }
 

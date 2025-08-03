@@ -21,6 +21,13 @@ public class FireStapler : MonoBehaviour
     bool isShooting;
     private Animator anim;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip shoot;
+    [SerializeField] AudioClip _reload;
+    [SerializeField][Range(0,1)] float shootVol;
+    [SerializeField][Range(0,1)] float reloadVol;
+    AudioSource audioSource;
+
     Camera camera;
     GameObject staple;
     PlayerHealth playerHealth;
@@ -31,6 +38,7 @@ public class FireStapler : MonoBehaviour
         currMag = maxMagazine;
         playerHealth = GetComponentInParent<PlayerHealth>();
         PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+        audioSource = GameManager.instance.playerAudioSource;
     }
 
     private void Update()
@@ -41,7 +49,6 @@ public class FireStapler : MonoBehaviour
             {
                 if(!isShooting) {
                 StartCoroutine(Shoot());
-                    PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
                 }
             }
 
@@ -50,6 +57,7 @@ public class FireStapler : MonoBehaviour
                 StartCoroutine(Reload());
             }
         }
+        PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
     }
 
     private IEnumerator Shoot()
@@ -58,6 +66,7 @@ public class FireStapler : MonoBehaviour
 
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 
+        audioSource.PlayOneShot(shoot, shootVol);
         staple = Instantiate(bullet, shootPos.position, camera.transform.rotation);
         currMag--;
         staple.GetComponent<Rigidbody>().AddForce(camera.transform.forward * bulletSpeed, ForceMode.Impulse);
@@ -74,9 +83,9 @@ public class FireStapler : MonoBehaviour
 
         yield return new WaitForSeconds(reloadWait);
         currMag = maxMagazine;
-        PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
         isReloading = false;
         anim.SetBool("Reload", false);
+        if (!isReloading) {audioSource.PlayOneShot(_reload, reloadVol);}
     }
 
 }

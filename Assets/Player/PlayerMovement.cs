@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+   AudioSource audioSource;
+
     [Header("Movement")]
     public float moveSpeed;
     public float sprintMod;
     public float sprintSpeed;
     public float origSpeed;
     public bool isSprinting;
+    bool stepIsPlaying;
 
     public float groundDrag;
 
@@ -35,6 +39,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform orientation;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip jump;
+    [SerializeField] AudioClip step;
+    [SerializeField][Range(0,1)] float jumpVol;
+    [SerializeField][Range(0,1)] float stepVol;
+
     float horizontalInput;
     float verticalInput;
 
@@ -57,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         sprintSpeed = moveSpeed * sprintMod;
         playerHealth = GetComponent<PlayerHealth>();
         spawnPlayer();
+        audioSource = GameManager.instance.playerAudioSource;
     }
 
     private void Update()
@@ -122,6 +133,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (!stepIsPlaying && moveDirection.normalized.magnitude > 0.5f)
+        {
+            StartCoroutine(PlaySteps());
+        }
+
         moveDirection = (transform.forward * verticalInput) + (transform.right * horizontalInput).normalized;
 
         if (OnSlope() && !exitingSlope)
@@ -135,7 +151,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (IsGrounded())
+        { 
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
+        }
         else if (!IsGrounded())
             rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
 
@@ -176,8 +194,27 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
+        audioSource.PlayOneShot(jump, jumpVol);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         jumps++;
+    }
+
+    IEnumerator PlaySteps()
+    {
+        stepIsPlaying = true;
+
+        audioSource.PlayOneShot(step, stepVol);
+
+        if (!isSprinting)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        stepIsPlaying = false;
     }
 
     private void ResetJump()

@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 2939987279409081469}
   - component: {fileID: 8330148908577489437}
   - component: {fileID: 6361929243637060853}
+  - component: {fileID: 1724071150260580084}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -521,6 +522,10 @@ MonoBehaviour:
   grounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 8202083118966410377}
+  jump: {fileID: 8300000, guid: 6a609c85353d49d4a99ad59f0a671027, type: 3}
+  step: {fileID: 8300000, guid: ee4723c53dc08584e8ca0fdc62a3725f, type: 3}
+  jumpVol: 1
+  stepVol: 1
 --- !u!114 &8269468113717634230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +541,10 @@ MonoBehaviour:
   MaxHp: 10
   currHp: 5
   dead: 0
+  damage: {fileID: 8300000, guid: 35b40c9404d374d4eb0c9e24e1b4e2fd, type: 3}
+  _dead: {fileID: 8300000, guid: 8144ab791c3d38c4e88be7ddd2f66c62, type: 3}
+  damageVol: 1
+  deadVol: 1
 --- !u!54 &2939987279409081469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -598,6 +607,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRewinding: 0
+--- !u!82 &1724071150260580084
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446901835313458238}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 583f7f7792444b8468f232716675f616, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1630597152501298075
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +1009,10 @@ MonoBehaviour:
   bullet: {fileID: 2479668419376947308, guid: 25192a43cff69e04794a688fa041113c, type: 3}
   shootPos: {fileID: 7037061208780535821}
   fire: 323
+  shoot: {fileID: 8300000, guid: 758888a37f341584db612d1995d2604e, type: 3}
+  _reload: {fileID: 8300000, guid: 034f46af66206f94c80ff2249ff1c95b, type: 3}
+  shootVol: 1
+  reloadVol: 0.2
 --- !u!1 &4288156883314817523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1705,10 @@ MonoBehaviour:
   bullet: {fileID: 2479668419376947308, guid: 25192a43cff69e04794a688fa041113c, type: 3}
   shootPos: {fileID: 7651455642176489882}
   fire: 323
+  shoot: {fileID: 0}
+  _reload: {fileID: 0}
+  shootVol: 0
+  reloadVol: 0
 --- !u!1 &8487751440389970365
 GameObject:
   m_ObjectHideFlags: 0
