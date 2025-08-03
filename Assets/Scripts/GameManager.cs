@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     //public playerControler playerScript;
     public GameObject playerSpawnPos;
+    public RewindManager rewindManager;
 
 
     [Header("-----Enemy Stuff-----")]
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
 
         player.transform.position = playerSpawnPos.transform.position;
+
+        rewindManager = player.GetComponentInChildren<RewindManager>();
         
     }
 
