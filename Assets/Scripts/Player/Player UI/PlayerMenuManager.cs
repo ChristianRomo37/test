@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMenuManager : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class PlayerMenuManager : MonoBehaviour
     [SerializeField] public GameObject activeMenu = null;
     [SerializeField] public GameObject previousActiveMenu = null;
     [SerializeField] public GameObject optionsMenu;
+    [SerializeField] public GameObject creditsMenu;
     [SerializeField] public GameObject returnToMainMenuConfirmation;
     [SerializeField] public GameObject pauseMenu;
+    [SerializeField] public GameObject loseMenu;
 
     public bool isPaused;
     float timeScaleOrig;
@@ -74,6 +77,17 @@ public class PlayerMenuManager : MonoBehaviour
         previousActiveMenu = null;
     }
 
+    public void SetCreditsMenuActive()
+    {
+        SetPreviousMenu();
+        if (activeMenu != null)
+        {
+            activeMenu.SetActive(false);
+        }
+        activeMenu = creditsMenu;
+        activeMenu.SetActive(true);
+    }
+
     public void ReturnToMainMenuPressed()
     {
         SetPreviousMenu();
@@ -109,6 +123,25 @@ public class PlayerMenuManager : MonoBehaviour
             previousActiveMenu = activeMenu;
             previousActiveMenu.SetActive(false);
         }
+    }
+
+    public void SetYouLoseMenuActive()
+    {
+        isPaused = !isPaused;
+        if (activeMenu != null)
+        {
+            activeMenu.SetActive(false);
+        }
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
+        PauseGame();
+    }
+    
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UnpauseGame();
     }
 
 
