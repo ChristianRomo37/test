@@ -9,12 +9,12 @@ public class WeaponPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI maxAmmoText;
 
 
-    public void SetMaxAmmo(float maxAmmo)
+    public virtual void SetMaxAmmo(float maxAmmo)
     {
         maxAmmoText.SetText(maxAmmo.ToString());
     }
 
-    public void SetCurrentAmmo(float currentAmmo)
+    public virtual void SetCurrentAmmo(float currentAmmo)
     {
         currentAmmoText.SetText(currentAmmo.ToString());
     }
