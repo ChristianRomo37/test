@@ -8,6 +8,7 @@ TagManager:
   - Player Spawn Pos
   - Door
   - Bullet
+  - Stored
   layers:
   - Default
   - TransparentFX

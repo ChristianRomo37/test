@@ -28,7 +28,16 @@ public class PU_Pickup : MonoBehaviour
 
         // Give effect to player
         var activate = playerRB.GetComponent<PlayerMovement>();
-        activate.StorePowerUp(pu_modifier);
+        
+        if (gameObject.CompareTag("Stored"))
+        {
+            activate.StorePowerUp(pu_modifier);
+        }
+        else
+        {
+            activate.ApplyPowerUpMod(pu_modifier);
+        }
+
 
         // Destroy Object
         Destroy(gameObject);
