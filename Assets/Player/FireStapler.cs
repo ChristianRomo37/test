@@ -6,10 +6,10 @@ public class FireStapler : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float dmg;
-    [SerializeField] private float fireRate;
+    [SerializeField] public float fireRate;
     [SerializeField] public float bulletSpeed;
     [Space]
-    [SerializeField] private float maxMagazine;
+    [SerializeField] public float maxMagazine;
     public float currMag;
     [SerializeField] private float reloadWait;
     public KeyCode reload = KeyCode.R;
@@ -93,10 +93,17 @@ public class FireStapler : MonoBehaviour
         isReloading = true;
         anim.SetBool("Reload", true);
 
+        if (GameManager.instance.akimboArm.activeSelf)
+            anim.SetBool("Reload2", true);
+
         yield return new WaitForSeconds(reloadWait);
         currMag = maxMagazine;
         isReloading = false;
         anim.SetBool("Reload", false);
+
+        if (!GameManager.instance.akimboArm.activeSelf)
+            anim.SetBool("Reload2", false);
+
         if (!isReloading) {audioSource.PlayOneShot(_reload, reloadVol);}
     }
 

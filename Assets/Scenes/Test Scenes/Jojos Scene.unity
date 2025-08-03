@@ -874,7 +874,7 @@ PrefabInstance:
     - target: {fileID: -2873463321574320594, guid: b94619eec29242143a013eaf05e03e2e, type: 3}
       propertyPath: akimboArm
       value: 
-      objectReference: {fileID: 520556450}
+      objectReference: {fileID: 0}
     - target: {fileID: 1920118091672394974, guid: b94619eec29242143a013eaf05e03e2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.54198
