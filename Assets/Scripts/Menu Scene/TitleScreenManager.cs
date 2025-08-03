@@ -22,8 +22,9 @@ public class TitleScreenManager : MonoBehaviour
     }
     public void StartNewGame()
     {
-        Instantiate(player);
+        //Instantiate(player);
         StartCoroutine(WorldSaveGameManager.instance.LoadWorldScene());
+        
     }
 
     public void QuitGame()

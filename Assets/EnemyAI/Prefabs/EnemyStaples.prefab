@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5588476938825455457}
   - component: {fileID: 375493991426374821}
   m_Layer: 0
-  m_Name: Staple
-  m_TagString: Bullet
+  m_Name: EnemyStaples
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   spinSpeed: {x: 360, y: 360, z: 360}
-  targetTag: Enemy
+  targetTag: Player
 --- !u!1 &2900057810564194183
 GameObject:
   m_ObjectHideFlags: 0

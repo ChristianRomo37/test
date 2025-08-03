@@ -30,6 +30,7 @@ public class FireStapler : MonoBehaviour
         anim = gameObject.GetComponentInParent<Animator>();
         currMag = maxMagazine;
         playerHealth = GetComponentInParent<PlayerHealth>();
+        PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
     }
 
     private void Update()
@@ -40,6 +41,7 @@ public class FireStapler : MonoBehaviour
             {
                 if(!isShooting) {
                 StartCoroutine(Shoot());
+                    PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
                 }
             }
 
@@ -72,7 +74,7 @@ public class FireStapler : MonoBehaviour
 
         yield return new WaitForSeconds(reloadWait);
         currMag = maxMagazine;
-
+        PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
         isReloading = false;
         anim.SetBool("Reload", false);
     }
