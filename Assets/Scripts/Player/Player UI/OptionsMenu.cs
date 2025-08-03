@@ -11,6 +11,10 @@ public class OptionsMenu : MonoBehaviour
   
     public TMP_Dropdown resolutionDropdown;
 
+    AudioClip audioClip;
+
+    Vector3 pos;
+
     Resolution[] resolutions;   
     public void Start()
     {
@@ -21,6 +25,8 @@ public class OptionsMenu : MonoBehaviour
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
+
+        //AudioSource.PlayClipAtPoint(audioClip, pos, audioMixer.GetFloat("MasterVolume", out value))
 
         for(int i = 0; i < resolutions.Length; i++)
         {

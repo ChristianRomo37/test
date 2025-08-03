@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyAI : MonoBehaviour
 {
     [Header("Patrolling")]
-    public float patrolWaitTime = 2f;
     public float wanderRadius = 7f;
     public float driftSpeed = 2f;
     public float patrolRange = 7f;
+    public float patrolWaitTimeMin = 1f;
+    public float patrolWaitTimeMax = 4f;
+
     [Range(0, 180)]
     public float patrolConeAngle = 30f;
 
@@ -36,12 +39,26 @@ public class EnemyAI : MonoBehaviour
     public float minPredictionDistance = 1.5f;
     public float maxPredictionDistance = 30f;
 
+    [Header("Audio")]
+    public AudioClip shootClip;
+    public AudioClip[] deathClip;
+    public AudioClip[] footstepsClips;
+    public float footstepInterval = 0.5f;
+    public AudioMixer audioMixer;
+    public float shootVolumeMultiplier = 1.0f;
+
+    [Header("Seperation")]
+    public float separationDistance = 1.5f;
+    public float separationStrength = 2f;
+
     private NavMeshAgent agent;
     private Transform player;
 
 
     private float patrolWaitTimer = 0f;
     private float shootTimer = 0f;
+    private float footstepTimer = 0f;
+    private float currentWaitDuration = 2f;
 
     private bool hasSeenPlayer = false;
     private bool waitingAtPoint = false;
@@ -52,6 +69,9 @@ public class EnemyAI : MonoBehaviour
 
     private Animator animator;
     private Rigidbody playerRb;
+    private AudioSource footstepAudio;
+
+    private float volume;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +79,9 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        footstepAudio = gameObject.AddComponent<AudioSource>();
+        footstepAudio.spatialBlend = 1f;
+        footstepAudio.playOnAwake = false;
 
         if (agent == null)
         {
@@ -130,6 +153,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         UpdateAnimation();
+        HandleFootsteps();
     }
     void UpdateAnimation()
     {
@@ -146,17 +170,18 @@ public class EnemyAI : MonoBehaviour
             if (!waitingAtPoint)
             {
                 patrolWaitTimer = 0f;
+                currentWaitDuration = Random.Range(patrolWaitTimeMin, patrolWaitTimeMax);
                 waitingAtPoint = true;
             }
 
             patrolWaitTimer += Time.deltaTime;
 
-            if (patrolWaitTimer >= patrolWaitTime)
+            if (patrolWaitTimer >= currentWaitDuration)
             {
                 Vector3 forwardDir = (player != null) ? (player.position - transform.position).normalized : transform.forward;
                 Vector3 newDestination = GetRandomNavMeshLocation(patrolCenter, forwardDir);
-                agent.SetDestination(newDestination);
-
+                Vector3 offset = GetSeparationOffset();
+                agent.SetDestination(newDestination + offset);
                 waitingAtPoint = false;
             }
         }
@@ -169,7 +194,8 @@ public class EnemyAI : MonoBehaviour
         {
             agent.isStopped = false;
             agent.updateRotation = true;
-            agent.SetDestination(player.position);
+            Vector3 offset = GetSeparationOffset();
+            agent.SetDestination(player.position + offset);
             animator.SetBool("isWalking", true);
         }
         else
@@ -208,6 +234,12 @@ public class EnemyAI : MonoBehaviour
         Vector3 leadTarget = PredictFuturePosition(shooterPos, targetPos, targetVelocity, bulletSpeed);
         Vector3 shootDir = (leadTarget - shooterPos).normalized;
 
+        if (shootClip != null)
+        {
+            volume = GetAdjustedVolume(audioMixer, "MasterVolume", shootVolumeMultiplier);
+            AudioSource.PlayClipAtPoint(shootClip, gunBarrel.position, volume);
+        }
+
         GameObject bullet = Instantiate(bulletPrefab, shooterPos, Quaternion.LookRotation(shootDir));
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
@@ -216,6 +248,16 @@ public class EnemyAI : MonoBehaviour
             rb.useGravity = false;
             rb.AddForce(shootDir * bulletForce, ForceMode.Impulse);
         }
+    }
+
+    float GetAdjustedVolume(AudioMixer mixer, string exposedParam, float multiplier = 1f)
+    {
+        if (mixer.GetFloat(exposedParam, out float db))
+        {
+            float linearVolume = Mathf.Pow(10f, db / 20f);
+            return linearVolume * multiplier;
+        }
+        return multiplier;
     }
 
     Vector3 PredictFuturePosition(Vector3 shooterPos, Vector3 targetPos, Vector3 targetVelocity, float bulletSpeed)
@@ -239,7 +281,11 @@ public class EnemyAI : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, viewRange))
         {
-            return hit.collider.CompareTag("Player");
+            if (hit.collider.CompareTag("Player"))
+                return true;
+
+            if (hit.rigidbody != null && hit.rigidbody == playerRb)
+                return true;
         }
         //make one for rigid body
         return false;
@@ -281,6 +327,72 @@ public class EnemyAI : MonoBehaviour
         Vector3 worldDir = rot * localDir;
 
         return worldDir;
+    }
+
+    void HandleFootsteps()
+    {
+        bool isMoving = agent.velocity.magnitude > 0.1f && agent.remainingDistance > agent.stoppingDistance + 0.1f;
+
+        if (isMoving)
+        {
+            footstepTimer += Time.deltaTime;
+
+            if (footstepTimer >= footstepInterval && footstepsClips.Length > 0)
+            {
+                AudioClip clip = footstepsClips[Random.Range(0, footstepsClips.Length)];
+                footstepAudio.pitch = Random.Range(0.9f, 1.1f);
+                volume = GetAdjustedVolume(audioMixer, "MasterVolume", shootVolumeMultiplier);
+                footstepAudio.PlayOneShot(clip, volume);
+                footstepTimer = 0f;
+            }
+        }
+        else
+        {
+            footstepTimer = footstepInterval;
+        }
+    }
+
+    public void PlayDeathSound()
+    {
+        if (deathClip != null && deathClip.Length > 0)
+        {
+            AudioClip clip = deathClip[Random.Range(0, deathClip.Length)];
+            volume = GetAdjustedVolume(audioMixer, "MasterVolume", shootVolumeMultiplier);
+            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+        }
+        else
+        {
+            Debug.LogWarning("No death clips assigned to enemy.");
+        }
+    }
+
+    Vector3 GetSeparationOffset()
+    {
+        Vector3 separation = Vector3.zero;
+        int count = 0;
+
+        Collider[] nearby = Physics.OverlapSphere(transform.position, separationDistance);
+        foreach (Collider col in nearby)
+        {
+            if (col.gameObject == this.gameObject) continue;
+            if (col.CompareTag("Enemy"))
+            {
+                Vector3 away = transform.position - col.transform.position;
+                if (away.magnitude > 0.01f)
+                {
+                    separation += away.normalized / away.magnitude;
+                    count++;
+                }
+            }
+        }
+
+        if (count > 0)
+        {
+            separation /= count;
+            separation = separation.normalized * separationStrength;
+        }
+
+        return separation;
     }
     void OnDrawGizmos()
     {

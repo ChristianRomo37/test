@@ -30,7 +30,8 @@ public class WorldSaveGameManager : MonoBehaviour
 
     public IEnumerator LoadWorldScene()
     {
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+       // AsyncOperation loadOperation = SceneManager.LoadScene(worldSceneIndex);
+        SceneManager.LoadScene(worldSceneIndex);
 
         yield return null;
     }
