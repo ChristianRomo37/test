@@ -28,4 +28,13 @@ public class DoorController : MonoBehaviour
             instructions.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Exit")
+        {
+            WorldSaveGameManager.instance.LoadWorldScene();
+        }
+;
+    }
 }

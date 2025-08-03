@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu_Scene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/World_Scene_01.unity
-    guid: 23f5e3bae3d89ce45b2b0f2ed88ff3b0
+    path: Assets/Scenes/Test Scenes/Colyns Scene.unity
+    guid: 3a48dacf40fe2854b8a5eeb8a17a64d0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9a87c1a4217ca874bbb600b56c7b5fda, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d05def1e2f518a24ab7ec36607c06e9e, type: 3}
