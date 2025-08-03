@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+
 
 public class DoorController : MonoBehaviour
 {
@@ -28,4 +30,6 @@ public class DoorController : MonoBehaviour
             instructions.SetActive(false);
         }
     }
+
+   
 }
