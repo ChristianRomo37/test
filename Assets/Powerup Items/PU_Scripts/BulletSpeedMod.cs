@@ -3,14 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUp Effect/Bullet Speed Modifier")]
 public class BulletSpeedMod : PU_Modifer
 {
-    [Header("Multiplier (e.g. 2 = double bullet speed)")]
-    public float speedMultiplier = 2f;
+    [Header("Speed += #")]
+    public float speedPlus = 50f;
 
     public override void Activate(GameObject staplerObject)
     {
         FireStapler stapler = staplerObject.GetComponentInChildren<FireStapler>();
         if (stapler == null) return;
 
-        stapler.bulletSpeed *= speedMultiplier;
+        stapler.bulletSpeed += speedPlus;
     }
 }
