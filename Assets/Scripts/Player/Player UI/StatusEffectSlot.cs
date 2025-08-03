@@ -55,8 +55,13 @@ public class StatusEffectSlot : MonoBehaviour
     {
         for(int i = 0; i < statusStoredEffectImage.Length; i++)
         {
-            statusStoredEffectImage[i].gameObject.SetActive(false);
-            statusStoredEffectImage[i] = null;
+            if (statusStoredEffectImage[i].gameObject.activeSelf)
+            {
+                statusStoredEffectImage[i].gameObject.SetActive(false);
+                statusStoredEffectImage[i] = null;
+            }
+              
+            
         }
     }
 

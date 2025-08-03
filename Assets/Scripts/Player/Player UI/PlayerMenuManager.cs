@@ -129,8 +129,12 @@ public class PlayerMenuManager : MonoBehaviour
 
     public void ResetGame()
     {
-        PlayerUIManager.instance.playerUIHudManager.ClearStoredEffectList();
-        PlayerUIManager.instance.playerUIHudManager.RemoveStatusQuickEffectSlot();
+        if(PlayerUIManager.instance.playerUIHudManager.statusEffectSlot.gameObject != null)
+        {
+            PlayerUIManager.instance.playerUIHudManager.ClearStoredEffectList();
+            PlayerUIManager.instance.playerUIHudManager.RemoveStatusQuickEffectSlot();
+        }
+        
         PlayerUIManager.instance.playerUIHudManager.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         

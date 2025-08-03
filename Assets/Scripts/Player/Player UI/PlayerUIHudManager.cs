@@ -10,7 +10,7 @@ public class PlayerUIHudManager : MonoBehaviour
 
     [SerializeField] WeaponPanel weaponPanel;
 
-    [SerializeField] StatusEffectSlot statusEffectSlot;
+    [SerializeField] public StatusEffectSlot statusEffectSlot;
 
     [SerializeField] public ReticleSpread reticleSpread;
 
