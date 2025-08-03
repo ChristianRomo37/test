@@ -7,7 +7,7 @@ public class FireStapler : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float dmg;
     [SerializeField] private float fireRate;
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] public float bulletSpeed;
     [Space]
     [SerializeField] private float maxMagazine;
     public float currMag;
@@ -23,28 +23,32 @@ public class FireStapler : MonoBehaviour
 
     Camera camera;
     GameObject staple;
+    PlayerHealth playerHealth;
 
     private void Start()
     {
         anim = gameObject.GetComponentInParent<Animator>();
         currMag = maxMagazine;
+        playerHealth = GetComponentInParent<PlayerHealth>();
         PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
     }
 
     private void Update()
     {
-        if (Input.GetKey(fire) && currMag > 0 && !isReloading)
+        if (!playerHealth.dead)
         {
-            if(!isShooting) {
-            StartCoroutine(Shoot());
-                PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+            if (Input.GetKey(fire) && currMag > 0 && !isReloading)
+            {
+                if(!isShooting) {
+                StartCoroutine(Shoot());
+                    PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+                }
             }
-        }
 
-        if (Input.GetKey(reload))
-        {
-            StartCoroutine(Reload());
-            
+            if (Input.GetKey(reload))
+            {
+                StartCoroutine(Reload());
+            }
         }
     }
 
@@ -56,6 +60,7 @@ public class FireStapler : MonoBehaviour
 
         staple = Instantiate(bullet, shootPos.position, camera.transform.rotation);
         currMag--;
+        Debug.Log("BulletSpeed: " + bulletSpeed);
         staple.GetComponent<Rigidbody>().AddForce(camera.transform.forward * bulletSpeed, ForceMode.Impulse);
 
         yield return new WaitForSeconds(fireRate);

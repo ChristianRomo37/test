@@ -61,26 +61,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f, whatIsGround);
         if (!playerHealth.dead)
         {
             MyInput();
             SpeedControl();
-        }
 
-        if (IsGrounded())
-        {
-            rb.linearDamping = groundDrag;
-            jumps = 0;
-            exitingSlope = false;
+            if (IsGrounded())
+            {
+                rb.linearDamping = groundDrag;
+                jumps = 0;
+                exitingSlope = false;
+            }
+            else
+                rb.linearDamping = 0;
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ActivatePowerUp();
+            }
         }
         else
-            rb.linearDamping = 0;
-
-        if (Input.GetKeyDown(KeyCode.E))
         {
-            ActivatePowerUp();
+            rb.linearVelocity = Vector3.zero;
         }
+
+        
     }
 
     private void FixedUpdate()
