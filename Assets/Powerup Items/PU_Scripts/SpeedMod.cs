@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PoweUp Effect/Speed Modifer")]
+[CreateAssetMenu(menuName = "PowerUp Effect/Speed Modifer")]
 public class SpeedMod : TimedPU_Modiifer
 {
     public float speedValue;

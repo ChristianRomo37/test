@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PoweUp Effect/Health Modifer")]
+[CreateAssetMenu(menuName = "PowerUp Effect/Health Modifer")]
 public class HealthMod : PU_Modifer
 {
     public int HpValue;
