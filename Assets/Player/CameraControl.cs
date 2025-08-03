@@ -27,9 +27,10 @@ public class CameraControl : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, -40f, 40f);
 
-        GameObject.FindGameObjectWithTag("Player").transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        //transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        //GameObject.FindGameObjectWithTag("Player").transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        orientation.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        transform.parent.parent.Rotate(Vector3.up, mouseX);
 
     }
 

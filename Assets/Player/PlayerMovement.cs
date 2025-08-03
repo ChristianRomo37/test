@@ -93,13 +93,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(jumpKey) && IsGrounded() && jumps <= jumpLimit)
+        if (Input.GetKey(jumpKey) && IsGrounded() && jumps <= jumpLimit && readyToJump)
         {
-            //readyToJump = false;
-
+            
             Jump();
 
-            //Invoke(nameof(ResetJump), jumpCoolDown);
+            readyToJump = false;
+
+            Invoke(nameof(ResetJump), jumpCoolDown);
         }
 
         if (Input.GetKey(sprintKey))
@@ -116,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = (transform.forward * verticalInput) + (transform.right * horizontalInput).normalized;
 
         if (OnSlope() && !exitingSlope)
         {
@@ -148,12 +149,12 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
-            Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.y);
+            Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
             if (flatVel.magnitude > moveSpeed)
             {
                 Vector3 limitedVel = flatVel.normalized * moveSpeed;
-                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.y);
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
             }
         }
     }
@@ -179,14 +180,14 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
 
-    private void Sprint()
-    {
-        while (isSprinting)
-        {
-            moveSpeed *= sprintMod;
-        }
-        moveSpeed = origSpeed;
-    }
+    //private void Sprint()
+    //{
+    //    while (isSprinting)
+    //    {
+    //        moveSpeed *= sprintMod;
+    //    }
+    //    moveSpeed = origSpeed;
+    //}
 
     private bool OnSlope()
     {

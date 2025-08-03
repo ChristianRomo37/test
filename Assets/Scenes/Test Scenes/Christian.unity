@@ -604,11 +604,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9164444276710784806, guid: f6a44b720d7f373438aeea8193c48d24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8
+      value: -0.69
       objectReference: {fileID: 0}
     - target: {fileID: 9164444276710784806, guid: f6a44b720d7f373438aeea8193c48d24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.52
+      value: -5.32
       objectReference: {fileID: 0}
     - target: {fileID: 9164444276710784806, guid: f6a44b720d7f373438aeea8193c48d24, type: 3}
       propertyPath: m_LocalRotation.w
@@ -754,6 +754,22 @@ PrefabInstance:
     - target: {fileID: 4523657939174913701, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_Name
       value: Player UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5752515818690320602, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8114587642522599175, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_AnchorMax.x
