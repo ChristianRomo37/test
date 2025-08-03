@@ -91,18 +91,20 @@ public class FireStapler : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
-        anim.SetBool("Reload", true);
 
         if (GameManager.instance.akimboArm.activeSelf)
             anim.SetBool("Reload2", true);
+        else
+            anim.SetBool("Reload", true);
 
-        yield return new WaitForSeconds(reloadWait);
+            yield return new WaitForSeconds(reloadWait);
         currMag = maxMagazine;
         isReloading = false;
-        anim.SetBool("Reload", false);
 
-        if (!GameManager.instance.akimboArm.activeSelf)
+        if (GameManager.instance.akimboArm.activeSelf)
             anim.SetBool("Reload2", false);
+        else
+            anim.SetBool("Reload", false);
 
         if (!isReloading) {audioSource.PlayOneShot(_reload, reloadVol);}
     }
