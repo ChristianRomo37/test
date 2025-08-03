@@ -66,7 +66,10 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
 
-        player.transform.position = playerSpawnPos.transform.position;
+                player.transform.position = playerSpawnPos.transform.position;
+        
+        
+        
         
     }
 

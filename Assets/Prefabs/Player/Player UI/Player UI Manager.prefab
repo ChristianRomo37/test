@@ -3293,9 +3293,9 @@ RectTransform:
   - {fileID: 4542306094628221055}
   m_Father: {fileID: 4227924227920914647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 150}
   m_SizeDelta: {x: 1920, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3945192940462135126
@@ -4087,6 +4087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4542306094628221055}
+  - component: {fileID: 7769945522360303836}
   m_Layer: 0
   m_Name: Weapon Panel
   m_TagString: Untagged
@@ -4117,6 +4118,20 @@ RectTransform:
   m_AnchoredPosition: {x: -296, y: -89.4}
   m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7769945522360303836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923375773347446526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce441630bf599c14c9b14789510ea68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmoText: {fileID: 1474570439539632687}
+  maxAmmoText: {fileID: 599955763756807674}
 --- !u!1 &4924442796875401150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7824,3 +7839,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2678584824487345667}
+  weaponPanel: {fileID: 7769945522360303836}
