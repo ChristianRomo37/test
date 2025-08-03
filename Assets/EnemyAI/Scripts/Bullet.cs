@@ -10,7 +10,10 @@ public class Bullet : MonoBehaviour
     public int damage = 1;
 
     [Header("Rotation")]
-    public Vector3 spinSpeed = new Vector3(360f, 360f, 360f); // degrees per second
+    public Vector3 spinSpeed = new Vector3(360f, 360f, 360f);
+
+    [Header("Target")]
+    public string targetTag;
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +41,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy")) 
+        if (other.CompareTag(targetTag))
         {
-            other.GetComponentInParent<IDamage>().TakeDamage(damage);
-        }
+            IDamage damageable = other.GetComponentInParent<IDamage>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage);
+            }
 
-        CleanUp();
+            CleanUp();
+        }
     }
 
     private void CleanUp()
