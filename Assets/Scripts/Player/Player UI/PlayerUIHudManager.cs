@@ -41,13 +41,32 @@ public class PlayerUIHudManager : MonoBehaviour
         weaponPanel.SetMaxAmmo(maxAmmo);
     }
 
-    public void SetStatusEffectSlot(Image image, float timeToKeepUp)
+    public void SetStatusQuickEffectSlot(Image image, float timeToKeepUp)
     {
         if(!statusEffectSlot.gameObject.activeSelf)
         {
             statusEffectSlot.gameObject.SetActive(true);   
         }
-        StartCoroutine(statusEffectSlot.SetStatusEffectSlot(image, timeToKeepUp));
+        StartCoroutine(statusEffectSlot.SetStatusQuickEffectSlot(image, timeToKeepUp));
+    }
+
+    public void SetStatusStoredEffectSlot(Image image)
+    {
+        if (!statusEffectSlot.gameObject.activeSelf)
+        {
+            statusEffectSlot.gameObject.SetActive(true);
+        }
+        statusEffectSlot.SetStatusStoredEffect(image);
+    }
+
+    public void ClearStoredEffectList()
+    {
+        statusEffectSlot.ClearStatusEffectList();
+    }
+
+    public void RemoveStatusQuickEffectSlot()
+    {
+        statusEffectSlot.RemoveStatusQuickEffect();
     }
 
     public void SpreadReticleIsShooting(bool isShooting)
