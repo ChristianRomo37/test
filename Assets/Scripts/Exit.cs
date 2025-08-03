@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.LightTransport;
 
 public class Exit : MonoBehaviour
@@ -7,7 +8,8 @@ public class Exit : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            WorldSaveGameManager.instance.LoadWorldScene();
+            Scene CurrentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(CurrentScene.name);
         }
 ;
     }

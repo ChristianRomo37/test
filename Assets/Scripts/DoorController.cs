@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+
 
 public class DoorController : MonoBehaviour
 {
@@ -29,12 +31,5 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Exit")
-        {
-            WorldSaveGameManager.instance.LoadWorldScene();
-        }
-;
-    }
+   
 }
