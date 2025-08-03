@@ -6,28 +6,62 @@ using UnityEngine.UI;
 public class StatusEffectSlot : MonoBehaviour
 {
 
-    Image statusEffectImage;
+    [SerializeField] Image statusQuickEffectImage;
+
+    [SerializeField] Image[] statusStoredEffectImage;
 
 
-    protected virtual void Awake()
+
+
+    public virtual IEnumerator SetStatusQuickEffectSlot(Image image, float timeToKeepUp)
     {
-        statusEffectImage = GetComponentInChildren<Image>();
-    }
-
-
-
-    public virtual IEnumerator SetStatusEffectSlot(Image image, float timeToKeepUp)
-    {
-        statusEffectImage.sprite = image.sprite;
+        statusQuickEffectImage.gameObject.SetActive(true);
+        statusQuickEffectImage.sprite = image.sprite;
 
         yield return new WaitForSeconds(timeToKeepUp);
 
-        statusEffectImage.sprite = null;
+
+        statusQuickEffectImage.sprite = null;
+        statusQuickEffectImage.gameObject.SetActive(false);
     }
 
-    public virtual void RemoveStatusEffectSlot()
+    public virtual void RemoveStatusQuickEffect()
     {
-        statusEffectImage.sprite = null;
+        statusQuickEffectImage.sprite = null;
+        statusQuickEffectImage.gameObject.SetActive(false);
     }
+
+    public virtual void SetStatusStoredEffect(Image image)
+    {
+        for(int i = 0; i < statusStoredEffectImage.Length; i++)
+        {
+            if(statusStoredEffectImage[i] != null)
+            {
+                if (statusStoredEffectImage[i] == image)
+                {
+                    continue;
+                }
+                else
+                {
+                    statusStoredEffectImage[i].gameObject.SetActive(true);
+                    statusStoredEffectImage[i] = image;
+                    return;
+                }
+            }
+        }
+    }
+
+    public virtual void ClearStatusEffectList()
+    {
+        for(int i = 0; i < statusStoredEffectImage.Length; i++)
+        {
+            statusStoredEffectImage[i] = null;
+            statusStoredEffectImage[i].gameObject.SetActive(false);
+        }
+    }
+
+
+
+
 
 }
