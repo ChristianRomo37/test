@@ -74,7 +74,11 @@ public class FireStapler : MonoBehaviour
         float y = UnityEngine.Random.Range((-reticleSpread.currentSize / reticleSpread.maxSize) / 15, (reticleSpread.currentSize / reticleSpread.maxSize) / 15);
         float x = UnityEngine.Random.Range((-reticleSpread.currentSize / reticleSpread.maxSize) / 15, (reticleSpread.currentSize / reticleSpread.maxSize) / 15);
 
-        audioSource.PlayOneShot(shoot, shootVol);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(shoot, shootVol);
+        }
+        
         staple = Instantiate(bullet, shootPos.position, camera.transform.rotation);
         currMag--;
         Debug.Log("BulletSpeed: " + bulletSpeed);

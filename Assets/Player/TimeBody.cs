@@ -22,14 +22,18 @@ public class TimeBody : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.rewindManager.isActiveAndEnabled)
+        if(GameManager.instance.rewindManager != null)
         {
-            on = true;
+            if (GameManager.instance.rewindManager.isActiveAndEnabled)
+            {
+                on = true;
+            }
+            else
+            {
+                on = false;
+            }
         }
-        else
-        {
-            on = false;
-        }
+        
     }
 
     private void FixedUpdate()
@@ -43,7 +47,7 @@ public class TimeBody : MonoBehaviour
         }
     }
 
-    void Rewind()
+    public void Rewind()
     {
         if (pointsInTime.Count > 0) {
             PointInTime pointInTime = pointsInTime[0];

@@ -3,10 +3,23 @@ using UnityEngine;
 
 public class RewindManager : MonoBehaviour
 {
-    TimeBody timeBody;
+    public static RewindManager instance;
+    public TimeBody timeBody;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
+        //DontDestroyOnLoad(gameObject);
         timeBody = GetComponentInParent<TimeBody>();
     }
 

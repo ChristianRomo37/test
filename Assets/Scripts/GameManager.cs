@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Update()

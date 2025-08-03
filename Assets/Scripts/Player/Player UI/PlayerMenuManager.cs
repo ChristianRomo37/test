@@ -15,7 +15,6 @@ public class PlayerMenuManager : MonoBehaviour
     [SerializeField] public GameObject creditsMenu;
     [SerializeField] public GameObject returnToMainMenuConfirmation;
     [SerializeField] public GameObject pauseMenu;
-    [SerializeField] public GameObject loseMenu;
 
     public bool isPaused;
     float timeScaleOrig;
@@ -99,6 +98,7 @@ public class PlayerMenuManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+        Destroy(GameManager.instance.gameObject);
         UnpauseGame();
         StartCoroutine(WorldSaveGameManager.instance.LoadMainMenu());
         Cursor.lockState = CursorLockMode.Confined;
@@ -125,23 +125,12 @@ public class PlayerMenuManager : MonoBehaviour
         }
     }
 
-    public void SetYouLoseMenuActive()
-    {
-        isPaused = !isPaused;
-        if (activeMenu != null)
-        {
-            activeMenu.SetActive(false);
-        }
-        activeMenu = loseMenu;
-        activeMenu.SetActive(true);
-        PauseGame();
-    }
     
 
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        UnpauseGame();
+        
     }
 
 

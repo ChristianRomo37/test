@@ -94,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.linearVelocity = Vector3.zero;
+            PlayerUIManager.instance.playerMenuManager.ResetGame();
         }
 
         
@@ -203,7 +204,11 @@ public class PlayerMovement : MonoBehaviour
     {
         stepIsPlaying = true;
 
-        audioSource.PlayOneShot(step, stepVol);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(step, stepVol);
+        }
+       
 
         if (!isSprinting)
         {
