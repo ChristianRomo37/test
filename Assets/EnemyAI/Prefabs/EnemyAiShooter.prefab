@@ -1522,15 +1522,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f488bcd0e71c8984a87048cdd16d1c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolWaitTime: 3
   wanderRadius: 7
   driftSpeed: 2
   patrolRange: 7
-  patrolConeAngle: 30
+  patrolWaitTimeMin: 1
+  patrolWaitTimeMax: 4
+  patrolConeAngle: 20
   viewRange: 20
   shootRange: 20
   bulletForce: 10
-  bulletPrefab: {fileID: 2479668419376947308, guid: 25192a43cff69e04794a688fa041113c, type: 3}
+  bulletPrefab: {fileID: 2479668419376947308, guid: 80cace5e9caa99446a9d81fd7d1772df, type: 3}
   gunBarrel: {fileID: 3070348673253848675}
   shootCooldown: 1
   rotationSpeed: 1080
@@ -1549,6 +1550,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 300e01ea97604934bb94c2dff34bf594, type: 3}
   - {fileID: 8300000, guid: ee4723c53dc08584e8ca0fdc62a3725f, type: 3}
   footstepInterval: 0.5
+  audioMixer: {fileID: 24100000, guid: 583f7f7792444b8468f232716675f616, type: 2}
+  shootVolumeMultiplier: 5
+  separationDistance: 1.5
+  separationStrength: 2
 --- !u!114 &7375049308088149097
 MonoBehaviour:
   m_ObjectHideFlags: 0
