@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     //public playerControler playerScript;
     public GameObject playerSpawnPos;
     public RewindManager rewindManager;
+    public GameObject akimboArm;
 
 
     [Header("-----Enemy Stuff-----")]

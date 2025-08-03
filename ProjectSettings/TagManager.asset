@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Bullet
   - Stored
+  - AkimboArm
   layers:
   - Default
   - TransparentFX

@@ -274,11 +274,11 @@ GameObject:
   - component: {fileID: 6741774690775554122}
   m_Layer: 7
   m_Name: AkimboArm
-  m_TagString: Untagged
+  m_TagString: AkimboArm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &513265117790468295
 Transform:
   m_ObjectHideFlags: 0
