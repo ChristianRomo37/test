@@ -8,6 +8,7 @@ public class TitleScreenManager : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Button optionsButton;
+    [SerializeField] Button creditsButton;
     private PlayerMenuManager playerMenuManager;
 
     private void Start()
@@ -18,6 +19,9 @@ public class TitleScreenManager : MonoBehaviour
         {
             optionsButton.onClick.RemoveAllListeners();
             optionsButton.onClick.AddListener(playerMenuManager.SetOptionsMenuActive);
+
+            creditsButton.onClick.RemoveAllListeners();
+            creditsButton.onClick.AddListener(playerMenuManager.SetCreditsMenuActive);
         }
     }
     public void StartNewGame()

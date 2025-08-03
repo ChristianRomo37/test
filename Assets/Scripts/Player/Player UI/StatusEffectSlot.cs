@@ -16,9 +16,13 @@ public class StatusEffectSlot : MonoBehaviour
 
 
 
-    public virtual void SetStatusEffectSlot(Image image)
+    public virtual IEnumerator SetStatusEffectSlot(Image image, float timeToKeepUp)
     {
         statusEffectImage.sprite = image.sprite;
+
+        yield return new WaitForSeconds(timeToKeepUp);
+
+        statusEffectImage.sprite = null;
     }
 
     public virtual void RemoveStatusEffectSlot()

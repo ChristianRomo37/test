@@ -25,13 +25,21 @@ public class PlayerHealth : MonoBehaviour, IDamage
 
     public void TakeDamage(float _damage)
     {
-        audioSource.PlayOneShot(damage, damageVol);
+        if(audioSource != null)
+        {
+            audioSource.PlayOneShot(damage, damageVol);
+        }
+        
 
         currHp -= _damage;
 
         if (currHp <= 0)
         {
-            audioSource.PlayOneShot(_dead, deadVol);
+            if(audioSource != null)
+            {
+               audioSource.PlayOneShot(_dead, deadVol);
+            }
+            
             dead = true;
         }
 

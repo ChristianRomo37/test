@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Stored
   - AkimboArm
+  - Exit
   layers:
   - Default
   - TransparentFX
