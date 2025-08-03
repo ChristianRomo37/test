@@ -23,28 +23,32 @@ public class FireStapler : MonoBehaviour
 
     Camera camera;
     GameObject staple;
+    PlayerHealth playerHealth;
 
     private void Start()
     {
         anim = gameObject.GetComponentInParent<Animator>();
         currMag = maxMagazine;
+        playerHealth = GetComponentInParent<PlayerHealth>();
         PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
     }
 
     private void Update()
     {
-        if (Input.GetKey(fire) && currMag > 0 && !isReloading)
+        if (!playerHealth.dead)
         {
-            if(!isShooting) {
-            StartCoroutine(Shoot());
-                PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+            if (Input.GetKey(fire) && currMag > 0 && !isReloading)
+            {
+                if(!isShooting) {
+                StartCoroutine(Shoot());
+                    PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+                }
             }
-        }
 
-        if (Input.GetKey(reload))
-        {
-            StartCoroutine(Reload());
-            
+            if (Input.GetKey(reload))
+            {
+                StartCoroutine(Reload());
+            }
         }
     }
 
