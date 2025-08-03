@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 513265117790468295}
   - component: {fileID: 6898685650316477252}
   - component: {fileID: 2886326217080120928}
+  - component: {fileID: 918351625841287222}
   - component: {fileID: 6741774690775554122}
   m_Layer: 7
   m_Name: AkimboArm
@@ -349,6 +350,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &918351625841287222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967686392363854589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f0106595dea4bd4083654b4248fd49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &6741774690775554122
 BoxCollider:
   m_ObjectHideFlags: 0
