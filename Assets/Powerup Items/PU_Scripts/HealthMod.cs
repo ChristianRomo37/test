@@ -10,12 +10,12 @@ public class HealthMod : PU_Modifer
     {
         var playerHealth = target.GetComponent<PlayerHealth>();
 
-        Debug.Log(playerHealth.currHp);
+        Debug.Log("Curr HP: " + playerHealth.currHp);
 
         playerHealth.currHp += HpValue;
         playerHealth.currHp = Mathf.Clamp(playerHealth.currHp, 0, playerHealth.MaxHp);
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(playerHealth.currHp, playerHealth.currHp);
 
-        Debug.Log(playerHealth.currHp);
+        Debug.Log("Curr HP: " + playerHealth.currHp);
     }
 }

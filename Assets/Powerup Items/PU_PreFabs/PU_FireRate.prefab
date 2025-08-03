@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 54c8451b55ffecb48864cfb6ba684d60, type: 2}
     - target: {fileID: 919132149155446097, guid: 64a927c80033db0409b71cfd8df5461a, type: 3}
       propertyPath: m_Name
-      value: SpeedChevRed
+      value: PU_FireRate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70266e70ef850284e9140f51ab093e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 07f341fa58fa1c849b030859e11be223, type: 3}
   pu_modifier: {fileID: 11400000, guid: 89356cf7175b7e9468f850362249c615, type: 2}
   clip: {fileID: 8300000, guid: 985b7d03f8f18dd48b342603c7f5aba9, type: 3}
   source: {fileID: 3721307925267542977}
