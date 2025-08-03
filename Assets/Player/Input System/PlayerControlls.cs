@@ -789,7 +789,7 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""dee53bbd-427c-4c6d-b829-e21480379d52"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -7,19 +7,31 @@ public class PlayerHealth : MonoBehaviour, IDamage
     [SerializeField] public float currHp;
     public bool dead;
 
+    AudioSource audioSource;
+    [Header("Audio")]    
+    [SerializeField] AudioClip damage;
+    [SerializeField] AudioClip _dead;
+    [SerializeField][Range(0,1)] float damageVol;
+    [SerializeField][Range (0,1)] float deadVol;
+
     private void Start()
     {
         currHp = MaxHp;
 
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(currHp, currHp / MaxHp);
+
+        audioSource = GameManager.instance.playerAudioSource;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float _damage)
     {
-        currHp -= damage;
+        audioSource.PlayOneShot(damage, damageVol);
+
+        currHp -= _damage;
 
         if (currHp <= 0)
         {
+            audioSource.PlayOneShot(_dead, deadVol);
             dead = true;
         }
 
