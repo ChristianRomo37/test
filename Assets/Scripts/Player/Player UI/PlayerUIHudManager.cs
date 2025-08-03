@@ -7,6 +7,9 @@ public class PlayerUIHudManager : MonoBehaviour
 {
     [SerializeField] UI_Stat_Bar healthBar;
 
+    [SerializeField] WeaponPanel weaponPanel;
+
+
     public void SetNewHealthValue(float oldValue, float newValue)
     {
         if(oldValue < newValue)
@@ -25,5 +28,11 @@ public class PlayerUIHudManager : MonoBehaviour
     public void SetMaxHealthValue(float maxHealth)
     {
         healthBar.SetMaxStat(maxHealth);
+    }
+
+    public void SetAmmoText(float currentAmmo, float maxAmmo)
+    {
+        weaponPanel.SetCurrentAmmo(currentAmmo);
+        weaponPanel.SetMaxAmmo(maxAmmo);
     }
 }
