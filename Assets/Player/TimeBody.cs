@@ -8,6 +8,8 @@ public class TimeBody : MonoBehaviour
 
     private List<PointInTime> pointsInTime;
 
+    [SerializeField] public float timeToRewind;
+
     Rigidbody rb;
 
     bool on;
@@ -58,7 +60,7 @@ public class TimeBody : MonoBehaviour
 
     void Record()
     {
-        if (pointsInTime.Count > Mathf.Round(5f / Time.fixedDeltaTime))
+        if (pointsInTime.Count > Mathf.Round(timeToRewind / Time.fixedDeltaTime))
         {
             pointsInTime.RemoveAt(pointsInTime.Count - 1);
         }
