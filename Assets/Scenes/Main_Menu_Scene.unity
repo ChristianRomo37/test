@@ -2247,6 +2247,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1117814624110366356, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: reticleSpread
+      value: 
+      objectReference: {fileID: 2738912937179476807}
+    - target: {fileID: 1117814624110366356, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+      propertyPath: statusEffectSlot
+      value: 
+      objectReference: {fileID: 1916842457}
     - target: {fileID: 1712234502998727251, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2408,6 +2416,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2040836349492678056, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
   m_PrefabInstance: {fileID: 2738912937179476805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2738912937179476807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1438617735289880442, guid: aa0ff02a195a62a4c86770182bcb3b7a, type: 3}
+  m_PrefabInstance: {fileID: 2738912937179476805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490f0af682d56014a98ceb1c30722ee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5828306333729653348
 PrefabInstance:
   m_ObjectHideFlags: 0

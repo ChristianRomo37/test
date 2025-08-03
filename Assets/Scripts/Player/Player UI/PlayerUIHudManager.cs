@@ -12,6 +12,8 @@ public class PlayerUIHudManager : MonoBehaviour
 
     [SerializeField] StatusEffectSlot statusEffectSlot;
 
+    [SerializeField] public ReticleSpread reticleSpread;
+
 
     public void SetNewHealthValue(float oldValue, float newValue)
     {
@@ -52,5 +54,10 @@ public class PlayerUIHudManager : MonoBehaviour
     {
         statusEffectSlot.gameObject.SetActive(false);
         statusEffectSlot.RemoveStatusEffectSlot();
+    }
+
+    public void SpreadReticleIsShooting(bool isShooting)
+    {
+        reticleSpread.isShooting = isShooting;
     }
 }

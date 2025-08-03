@@ -27,6 +27,7 @@ public class FireStapler : MonoBehaviour
     [SerializeField][Range(0,1)] float shootVol;
     [SerializeField][Range(0,1)] float reloadVol;
     AudioSource audioSource;
+    ReticleSpread reticleSpread;
 
     Camera camera;
     GameObject staple;
@@ -39,6 +40,7 @@ public class FireStapler : MonoBehaviour
         playerHealth = GetComponentInParent<PlayerHealth>();
         PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
         audioSource = GameManager.instance.playerAudioSource;
+        reticleSpread = PlayerUIManager.instance.playerUIHudManager.reticleSpread;
     }
 
     private void Update()
@@ -58,6 +60,7 @@ public class FireStapler : MonoBehaviour
             }
         }
         PlayerUIManager.instance.playerUIHudManager.SetAmmoText(currMag, maxMagazine);
+        PlayerUIManager.instance.playerUIHudManager.SpreadReticleIsShooting(isShooting);
     }
 
     private IEnumerator Shoot()
@@ -65,12 +68,20 @@ public class FireStapler : MonoBehaviour
         isShooting = true;
 
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        Vector3 screenCenter = new Vector3(0.5f, 0.5f, 0);
+        Ray screenRay = Camera.main.ViewportPointToRay(screenCenter);
+
+        float y = UnityEngine.Random.Range((-reticleSpread.currentSize / reticleSpread.maxSize) / 15, (reticleSpread.currentSize / reticleSpread.maxSize) / 15);
+        float x = UnityEngine.Random.Range((-reticleSpread.currentSize / reticleSpread.maxSize) / 15, (reticleSpread.currentSize / reticleSpread.maxSize) / 15);
 
         audioSource.PlayOneShot(shoot, shootVol);
         staple = Instantiate(bullet, shootPos.position, camera.transform.rotation);
         currMag--;
         Debug.Log("BulletSpeed: " + bulletSpeed);
-        staple.GetComponent<Rigidbody>().AddForce(camera.transform.forward * bulletSpeed, ForceMode.Impulse);
+
+        Vector3 spreadDirection = screenRay.direction + new Vector3(x, y, 0f);
+
+        staple.GetComponent<Rigidbody>().AddForce(spreadDirection * bulletSpeed, ForceMode.Impulse);
 
         yield return new WaitForSeconds(fireRate);
 
