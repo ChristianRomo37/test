@@ -15,10 +15,23 @@ public class Bullet : MonoBehaviour
     [Header("Target")]
     public string targetTag;
 
+    //[Header("Pierce Bullets Script")]
+    //[SerializeField] PierceBulletsMod pierceBulletsScript;
+
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, lifeTime);
+
+        //if (this.gameObject.CompareTag("Bullet"))
+        //{
+        //    pierceBulletsScript.pierceBullets = false;
+
+        //    if (!pierceBulletsScript.pierceBullets)
+        //        Destroy(gameObject, lifeTime);
+        //    else
+        //        Destroy(gameObject, 6f);
+        //}
     }
 
     void Update()
@@ -33,10 +46,18 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            
+
         }
 
-        Destroy(gameObject);
+        //if (this.gameObject.CompareTag("Bullet"))
+        //{
+        //    if (pierceBulletsScript.pierceBullets)
+        //    {
+
+        //    }
+        //}
+        //else
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,13 +70,28 @@ public class Bullet : MonoBehaviour
                 damageable.TakeDamage(damage);
             }
 
-            CleanUp();
+            //if (this.gameObject.CompareTag("Bullet"))
+            //{
+            //    if (pierceBulletsScript)
+            //    {
+                   
+            //    }
+            //}
+            //else
+            //{
+               CleanUp();
+            //}
         }
     }
 
     private void CleanUp()
     {
         Destroy(gameObject);
+    }
+
+    IEnumerator DelayedAction()
+    {
+        yield return new WaitForSeconds(5f);
     }
 
 }

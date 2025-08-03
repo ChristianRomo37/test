@@ -41,7 +41,7 @@ public class PlayerUIHudManager : MonoBehaviour
         weaponPanel.SetMaxAmmo(maxAmmo);
     }
 
-    public void SetStatusQuickEffectSlot(Image image, float timeToKeepUp)
+    public void SetStatusQuickEffectSlot(Sprite image, float timeToKeepUp)
     {
         if(!statusEffectSlot.gameObject.activeSelf)
         {
@@ -50,7 +50,7 @@ public class PlayerUIHudManager : MonoBehaviour
         StartCoroutine(statusEffectSlot.SetStatusQuickEffectSlot(image, timeToKeepUp));
     }
 
-    public void SetStatusStoredEffectSlot(Image image)
+    public void SetStatusStoredEffectSlot(Sprite image)
     {
         if (!statusEffectSlot.gameObject.activeSelf)
         {

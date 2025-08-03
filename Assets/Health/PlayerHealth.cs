@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamage
 {
     [Header("Stats")]
-    [SerializeField] float MaxHp;
+    [SerializeField] public float MaxHp;
     [SerializeField] public float currHp;
     public bool dead;
 

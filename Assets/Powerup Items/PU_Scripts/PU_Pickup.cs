@@ -1,8 +1,14 @@
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
+//using Microsoft.Unity.VisualStudio.Editor;
+//using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class PU_Pickup : MonoBehaviour
 {
+    [SerializeField] Sprite image;
     public PU_Modifer pu_modifier;
     public AudioClip clip;
     public AudioSource source;
@@ -12,8 +18,11 @@ public class PU_Pickup : MonoBehaviour
         var playerRB = other.GetComponentInParent<Rigidbody>();
 
         // Check playerRB filled
-        if (playerRB != null && !playerRB.CompareTag("Bullet"))
+        if (playerRB != null && !playerRB.CompareTag("Bullet") && !playerRB.CompareTag("Enemy Bullet"))
         {
+            //if (gameObject.CompareTag("Time Reverse"))
+            //    GameManager.instance.rewindManager.enabled = true;
+
             ActivatePowerUp(playerRB);
         }
 
@@ -29,12 +38,14 @@ public class PU_Pickup : MonoBehaviour
         // Give effect to player
         var activate = playerRB.GetComponent<PlayerMovement>();
         
-        if (gameObject.CompareTag("Stored"))
+        if (gameObject.CompareTag("Stored")) //|| gameObject.CompareTag("Time Reverse"))
         {
+            PlayerUIManager.instance.playerUIHudManager.SetStatusStoredEffectSlot(image);
             activate.StorePowerUp(pu_modifier);
         }
         else
         {
+            PlayerUIManager.instance.playerUIHudManager.SetStatusQuickEffectSlot(image, 2);
             activate.ApplyPowerUpMod(pu_modifier);
         }
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 375493991426374821}
   m_Layer: 0
   m_Name: EnemyStaples
-  m_TagString: Untagged
+  m_TagString: Enemy Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   damage: 1
   spinSpeed: {x: 360, y: 360, z: 360}
   targetTag: Player
+  pierceBulletsScript: {fileID: 0}
 --- !u!1 &2900057810564194183
 GameObject:
   m_ObjectHideFlags: 0

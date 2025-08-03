@@ -16,6 +16,8 @@ public class EnemyHealth : MonoBehaviour, IDamage
 
     [Header("Death Settings")]
     public float deathAnimationDuration = 4f;
+    public GameObject[] puDrops;
+    [Range(0f, 100f)] public float dropChancePercentage = 25f;
 
     private void Start()
     {
@@ -48,6 +50,7 @@ public class EnemyHealth : MonoBehaviour, IDamage
         dead = true;
         Debug.Log($"{gameObject.name} died!");
         enemyAi.PlayDeathSound();
+        int randomNum = UnityEngine.Random.Range(0, 100);
 
         // Play death animation using "isDead" bool
         if (animator != null)
@@ -70,6 +73,15 @@ public class EnemyHealth : MonoBehaviour, IDamage
         if (col != null)
         {
             col.enabled = false;
+        }
+
+        Debug.Log("Drop Chance Num: " + randomNum);
+        if (randomNum <= dropChancePercentage)
+        {
+            int randomValue = UnityEngine.Random.Range(0, puDrops.Length);
+            GameObject objectToSpawn = puDrops[randomValue];
+
+            Instantiate(objectToSpawn, transform.position, transform.rotation);
         }
 
         Destroy(gameObject, deathAnimationDuration);

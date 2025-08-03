@@ -13,10 +13,10 @@ public class StatusEffectSlot : MonoBehaviour
 
 
 
-    public virtual IEnumerator SetStatusQuickEffectSlot(Image image, float timeToKeepUp)
+    public virtual IEnumerator SetStatusQuickEffectSlot(Sprite image, float timeToKeepUp)
     {
         statusQuickEffectImage.gameObject.SetActive(true);
-        statusQuickEffectImage.sprite = image.sprite;
+        statusQuickEffectImage.sprite = image;
 
         yield return new WaitForSeconds(timeToKeepUp);
 
@@ -31,22 +31,22 @@ public class StatusEffectSlot : MonoBehaviour
         statusQuickEffectImage.gameObject.SetActive(false);
     }
 
-    public virtual void SetStatusStoredEffect(Image image)
+    public virtual void SetStatusStoredEffect(Sprite image)
     {
         for(int i = 0; i < statusStoredEffectImage.Length; i++)
         {
-            if(statusStoredEffectImage[i] != null)
+            if(statusStoredEffectImage[i].sprite != null)
             {
-                if (statusStoredEffectImage[i] == image)
+                if (statusStoredEffectImage[i].sprite == image)
                 {
                     continue;
                 }
-                else
-                {
-                    statusStoredEffectImage[i].gameObject.SetActive(true);
-                    statusStoredEffectImage[i] = image;
-                    return;
-                }
+            }
+            else
+            {
+                statusStoredEffectImage[i].gameObject.SetActive(true);
+                statusStoredEffectImage[i].sprite = image;
+                return;
             }
         }
     }
@@ -55,8 +55,8 @@ public class StatusEffectSlot : MonoBehaviour
     {
         for(int i = 0; i < statusStoredEffectImage.Length; i++)
         {
-            statusStoredEffectImage[i] = null;
             statusStoredEffectImage[i].gameObject.SetActive(false);
+            statusStoredEffectImage[i] = null;
         }
     }
 

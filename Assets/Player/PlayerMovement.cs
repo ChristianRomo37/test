@@ -86,8 +86,9 @@ public class PlayerMovement : MonoBehaviour
             else
                 rb.linearDamping = 0;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && playerHealth.currHp != playerHealth.MaxHp)
             {
+                PlayerUIManager.instance.playerUIHudManager.ClearStoredEffectList();
                 ActivatePowerUp();
             }
         }

@@ -5,6 +5,7 @@ public class RewindManager : MonoBehaviour
 {
     public static RewindManager instance;
     public TimeBody timeBody;
+    //public bool rewindNow = false;
 
     private void Awake()
     {
@@ -25,7 +26,7 @@ public class RewindManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F))//rewindNow)
         {
             timeBody.StartRewind();
         }

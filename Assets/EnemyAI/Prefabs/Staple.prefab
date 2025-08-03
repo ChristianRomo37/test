@@ -146,6 +146,7 @@ MonoBehaviour:
   damage: 1
   spinSpeed: {x: 360, y: 360, z: 360}
   targetTag: Enemy
+  pierceBulletsScript: {fileID: 11400000, guid: 21e88639a029a2740b0a35a040ea1cf4, type: 2}
 --- !u!1 &2900057810564194183
 GameObject:
   m_ObjectHideFlags: 0

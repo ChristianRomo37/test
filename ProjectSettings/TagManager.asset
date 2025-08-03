@@ -11,6 +11,8 @@ TagManager:
   - Stored
   - AkimboArm
   - Exit
+  - Enemy Bullet
+  - Time Reverse
   layers:
   - Default
   - TransparentFX

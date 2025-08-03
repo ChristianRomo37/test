@@ -38,7 +38,7 @@ public class TimeBody : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (on)
+        if (on)//&& GameManager.instance.rewindManager.rewindNow
         {
             if (isRewinding)
                 Rewind(); 
