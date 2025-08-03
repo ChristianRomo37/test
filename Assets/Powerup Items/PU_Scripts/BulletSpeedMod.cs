@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PoweUp Effect/Bullet Speed Modifier")]
+[CreateAssetMenu(menuName = "PowerUp Effect/Bullet Speed Modifier")]
 public class BulletSpeedMod : PU_Modifer
 {
     [Header("Multiplier (e.g. 2 = double bullet speed)")]
