@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRewinding: 0
+  timeToRewind: 5
 --- !u!82 &1724071150260580084
 AudioSource:
   m_ObjectHideFlags: 0
