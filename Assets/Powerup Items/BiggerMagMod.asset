@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa373c6725755442bcba151175af3a9, type: 3}
-  m_Name: HpMod small
+  m_Script: {fileID: 11500000, guid: 991991b88e0ebb340bd64c62ebf6f738, type: 3}
+  m_Name: BiggerMagMod
   m_EditorClassIdentifier: 
-  HpValue: 5
+  addAmmo: 10
