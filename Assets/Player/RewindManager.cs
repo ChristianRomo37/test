@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RewindManager : MonoBehaviour
@@ -15,9 +16,18 @@ public class RewindManager : MonoBehaviour
         {
             timeBody.StartRewind();
         }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            timeBody.StopRewind();
-        }
+        //if (Input.GetKeyUp(KeyCode.F))
+        //{
+        //    timeBody.StopRewind();
+        //}
+    }
+
+    private IEnumerator Rewind()
+    {
+        timeBody.StartRewind();
+
+        yield return new WaitForSeconds(timeBody.timeToRewind);
+
+        timeBody.StopRewind();
     }
 }
