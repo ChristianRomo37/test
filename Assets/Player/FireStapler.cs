@@ -7,7 +7,7 @@ public class FireStapler : MonoBehaviour
     [Header("Stats")]
     [SerializeField] private float dmg;
     [SerializeField] private float fireRate;
-    [SerializeField] private float bulletSpeed;
+    [SerializeField] public float bulletSpeed;
     [Space]
     [SerializeField] private float maxMagazine;
     public float currMag;
@@ -60,6 +60,7 @@ public class FireStapler : MonoBehaviour
 
         staple = Instantiate(bullet, shootPos.position, camera.transform.rotation);
         currMag--;
+        Debug.Log("BulletSpeed: " + bulletSpeed);
         staple.GetComponent<Rigidbody>().AddForce(camera.transform.forward * bulletSpeed, ForceMode.Impulse);
 
         yield return new WaitForSeconds(fireRate);
