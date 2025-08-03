@@ -16,6 +16,7 @@ public class ReticleSpread : MonoBehaviour
     public float maxSize;
     public float speed;
     public float currentSize;
+    public bool isShooting;
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class ReticleSpread : MonoBehaviour
     {
         get
         {
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 || Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0 || isShooting)
             {
                 return true;
             }

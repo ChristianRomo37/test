@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public RewindManager rewindManager;
     public AudioSource playerAudioSource;
+    public GameObject akimboArm;
 
 
     [Header("-----Enemy Stuff-----")]
